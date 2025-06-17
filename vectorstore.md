@@ -4,12 +4,6 @@ Deze file beschrijft het RAG-component van de workflow op basis van een Supabase
 
 ---
 
-# 🧩 Supabase Vector Store & Embeddings
-
-Deze file beschrijft het RAG-component van de workflow op basis van een Supabase vector store in combinatie met OpenAI embeddings.
-
----
-
 ## 🔍 Wat doet deze component?
 
 - Zet productomschrijvingen om in vectorrepresentaties met `OpenAI Embeddings`.
@@ -90,3 +84,4 @@ Gebruik een n8n-workflow of een script (bijv. Python) dat:
 - Bewaar de originele GN-code in de `metadata` als referentie.
 - Zorg voor consistente beschrijvingen qua taal en stijl.
 - Overweeg periodiek hertrainen of re-embedding na grote updates.
+
