@@ -78,10 +78,28 @@ Gebruik een n8n-workflow of een script (bijv. Python) dat:
 
 ---
 
-## 🛠 Tips
+## 📥 Voorbeeld: GN-codes importeren vanuit Excel
 
-- Upload alleen **relevante en technisch duidelijke** omschrijvingen.
-- Bewaar de originele GN-code in de `metadata` als referentie.
-- Zorg voor consistente beschrijvingen qua taal en stijl.
-- Overweeg periodiek hertrainen of re-embedding na grote updates.
+Je kunt een Excel-bestand met GN-codes en omschrijvingen uploaden naar Supabase via een n8n-workflow.
 
+### 📄 Structuur van het Excel-bestand
+
+Het Excel-bestand bevat bijvoorbeeld de volgende kolommen:
+
+| CN2022 (GN-code) | Symbool | Omschrijving |
+|------------------|---------|--------------|
+| 1012100          | p/st    | Fokpaarden van zuiver ras |
+| 1012910          | p/st    | Slachtpaarden             |
+| ...              | ...     | ...                       |
+
+### 🔁 Workflowstappen
+
+1. **Lees het Excel-bestand in n8n** met een `Read Binary File` of `Microsoft Outlook Trigger`.
+2. **Gebruik een `Spreadsheet File` node** om de rijen te extraheren.
+3. **Maak JSON-records aan** waarbij je `Omschrijving` als `content` gebruikt, en `CN2022` en `Symbool` als `metadata`:
+
+```json
+{
+  "content": "Fokpaarden van zuiver ras",
+  "metadata": {
+    "gn
