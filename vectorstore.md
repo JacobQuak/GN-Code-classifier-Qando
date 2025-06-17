@@ -30,9 +30,13 @@ Deze file beschrijft het RAG-component van de workflow op basis van een Supabase
 
 ## 🧾 Hoe voeg je data toe aan Supabase?
 
-Je moet initieel een dataset uploaden waarin bestaande productomschrijvingen en GN-codes zijn opgeslagen als tekst. Volg deze stappen:
+Je kunt op twee manieren data toevoegen aan Supabase:
 
-### 1. Maak een `documents` tabel aan met minimaal deze kolommen:
+---
+
+### 🔧 1. Via SQL of Supabase UI (handmatig)
+
+#### 📄 Tabelstructuur
 
 | Kolomnaam     | Type        | Opmerking                               |
 |---------------|-------------|-----------------------------------------|
@@ -43,11 +47,7 @@ Je moet initieel een dataset uploaden waarin bestaande productomschrijvingen en 
 
 > ⚠️ Zorg dat je `embedding` kolom het juiste vectorformaat gebruikt (bijv. 1536 voor `text-embedding-ada-002`).
 
----
-
-### 2. Upload data via SQL of Supabase UI
-
-Voorbeeld-SQL:
+#### 📥 SQL Voorbeeld
 
 ```sql
 INSERT INTO documents (content, metadata)
@@ -58,48 +58,55 @@ VALUES
   );
 ```
 
-Je kunt ook handmatig rijen invoeren via de Supabase Table Editor.
+#### 🧠 Embeddings toevoegen
+
+Gebruik n8n of een script (zoals Python) om de `content` te vectoriseren en op te slaan in de `embedding` kolom.
 
 ---
 
-### 3. Genereer en voeg embeddings toe
+### ⚙️ 2. Via n8n: Add Documents to Vector Store node
 
-Gebruik een n8n-workflow of een script (bijv. Python) dat:
+Dit is de aanbevolen en meest geautomatiseerde methode.
 
-- De `content`-kolom ophaalt
-- Deze doorstuurt naar OpenAI voor vectorisatie
-- De verkregen embedding opslaat in de `embedding` kolom van dezelfde rij
+#### 📄 Voorbeeld Excel
 
-**n8n setup**:
+| CN2022 | Symbool | Omschrijving                         |
+|--------|---------|--------------------------------------|
+| 1012100| p/st    | Fokpaarden van zuiver ras            |
+| 1012910| p/st    | Slachtpaarden                        |
 
-1. Gebruik node `Supabase Select` om records op te halen zonder `embedding`.
-2. Gebruik `OpenAI Embeddings` node op de `content` veldwaarde.
-3. Update embedding in Supabase met `Supabase Update`.
+#### 🔁 Workflow in n8n
 
----
+1. **Lees het Excel-bestand in**, bijvoorbeeld via:
+   - `Microsoft Outlook Trigger` + bijlage
+   - `Read Binary File` + `Spreadsheet File` node
 
-## 📥 Voorbeeld: GN-codes importeren vanuit Excel
-
-Je kunt een Excel-bestand met GN-codes en omschrijvingen uploaden naar Supabase via een n8n-workflow.
-
-### 📄 Structuur van het Excel-bestand
-
-Het Excel-bestand bevat bijvoorbeeld de volgende kolommen:
-
-| CN2022 (GN-code) | Symbool | Omschrijving |
-|------------------|---------|--------------|
-| 1012100          | p/st    | Fokpaarden van zuiver ras |
-| 1012910          | p/st    | Slachtpaarden             |
-| ...              | ...     | ...                       |
-
-### 🔁 Workflowstappen
-
-1. **Lees het Excel-bestand in n8n** met een `Read Binary File` of `Microsoft Outlook Trigger`.
-2. **Gebruik een `Spreadsheet File` node** om de rijen te extraheren.
-3. **Maak JSON-records aan** waarbij je `Omschrijving` als `content` gebruikt, en `CN2022` en `Symbool` als `metadata`:
+2. **Transformeer naar JSON** met deze structuur:
 
 ```json
 {
   "content": "Fokpaarden van zuiver ras",
   "metadata": {
-    "gn
+    "gn_code": "1012100",
+    "symbool": "p/st"
+  }
+}
+```
+
+3. **Gebruik `Add Documents to Vector Store` node**:
+   - Kies de Supabase Vector Store
+   - Geef het veld `content` op voor vectorisatie
+   - Voeg metadata toe indien nodig
+
+De node:
+- Genereert automatisch de embedding via OpenAI
+- Slaat het op in de `documents` tabel in Supabase
+
+---
+
+## ✅ Best practices
+
+- Upload alleen relevante en technisch correcte omschrijvingen
+- Gebruik consistente stijl en terminologie
+- Bewaar GN-code en eenheid in `metadata` voor later gebruik
+- Herstructureer of her-embed bij grote updates
