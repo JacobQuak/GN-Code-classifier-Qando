@@ -110,3 +110,4 @@ De node:
 - Gebruik consistente stijl en terminologie
 - Bewaar GN-code en eenheid in `metadata` voor later gebruik
 - Herstructureer of her-embed bij grote updates
+- Het toevoegen van een nieuwe tabel moet in supabase een andere organisatie voor worden aangemaakt. N8n kan enkel de eerst toegevoegde tabel informatie ophalen als je de tabellen aanmaakt volgens de supabase quickstart: https://supabase.com/docs/guides/ai/langchain?database-method=sql
