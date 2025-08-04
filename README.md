@@ -7,7 +7,7 @@ Deze repository bevat een geavanceerde [n8n](https://n8n.io/) workflow voor het 
 - 📩 **Microsoft Outlook Trigger**: Start automatisch bij nieuwe inkomende e-mails met bijlagen (Excel-bestanden).
 - 📂 **Excel Extractie**: Haalt data uit Excel-bestanden.
 - 🧼 **Dataopschoning**: Lege waarden worden aangevuld met `"onbekend"`.
-- 🧠 **Beschrijvinggenerator**: Genereert een technische, uniforme productomschrijving via een AI-agent.
+- 🧠 **Beschrijvinggenerator**: Genereert een technische, uniforme productomschrijving via een AI-agent en gebruikt hiervoor het taalmodel o3.
 - 📡 **Internet Agent**: Haalt technische specificaties van het web.
 - 📊 **Vector Store Search**: Zoekt in een Supabase vector store naar de juiste GN-code (via RAG).
 - 💬 **AI Classificatie**: GPT-4o-mini wordt gebruikt om GN-code te genereren op basis van omschrijving en vectorinformatie.
