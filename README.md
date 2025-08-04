@@ -15,7 +15,7 @@ Deze repository bevat een geavanceerde [n8n](https://n8n.io/) workflow voor het 
 
 ## 🔧 Vereisten
 
-- Een werkende n8n-installatie (cloud of self-hosted).
+- Een werkende n8n-installatie (cloud).
 - Microsoft Outlook- en Excel 365-accounts gekoppeld aan n8n.
 - OpenAI API Key.
 - Supabase instance met vector store (`documents`).
