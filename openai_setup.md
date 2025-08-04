@@ -1,6 +1,6 @@
 # 🔐 OpenAI API Key Aanvragen en Instellen
 
-Deze handleiding is bedoeld voor collega’s die de GN-Code-classifier workflow in **n8n** willen gebruiken. Je hebt hiervoor een persoonlijke **OpenAI API key** nodig.
+OpenaAI modellen worden gebruikt om de AI nodes binnen de workflow te runnen. Je hebt hiervoor een persoonlijke **OpenAI API key** nodig.
 
 ---
 
@@ -10,11 +10,11 @@ De classifier maakt gebruik van OpenAI’s GPT-model om codefragmenten automatis
 
 ---
 
-## ✅ Stap 1 – Maak een account aan bij OpenAI
+## ✅ Stap 1 – Log in op het Qando OpenAI-account
 
-1. Ga naar: [https://platform.openai.com/signup](https://platform.openai.com/signup)
-2. Meld je aan met je werk-e-mailadres of een persoonlijk account
-3. Bevestig je e-mailadres indien nodig
+1. Ga naar: [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)
+2. Log in met de Qando OpenAI inloggegevens  
+
 
 ---
 
