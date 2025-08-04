@@ -8,7 +8,7 @@ Deze repository bevat een geavanceerde [n8n](https://n8n.io/) workflow voor het 
 - 📂 **Excel Extractie**: Haalt data uit Excel-bestanden.
 - 🧼 **Dataopschoning**: Lege waarden worden aangevuld met `"onbekend"`.
 - 🧠 **Beschrijvinggenerator**: Genereert een technische, uniforme productomschrijving via een AI-agent.
-- 📡 **Internet Agent**: Haalt technische specificaties van het web (via workflow call).
+- 📡 **Internet Agent**: Haalt technische specificaties van het web.
 - 📊 **Vector Store Search**: Zoekt in een Supabase vector store naar de juiste GN-code (via RAG).
 - 💬 **AI Classificatie**: GPT-4o-mini wordt gebruikt om GN-code te genereren op basis van omschrijving en vectorinformatie.
 - 📤 **Export naar Excel**: Resultaten worden teruggeschreven naar een gekoppeld Excel-bestand in Microsoft 365.
