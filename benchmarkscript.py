@@ -26,7 +26,7 @@ def gn_score(true_code, pred_code):
     else:
         return 0
 
-# Laad je Excel-bestand
+# Laad je Excel-bestand (met pad naar jouw excelbestand!)
 bestandspad = "/Users/jacobquak/Downloads/Qando GPT based Enrichement Articles with GN codes.xlsx"  # ← pas dit aan
 df = pd.read_excel(bestandspad)
 
