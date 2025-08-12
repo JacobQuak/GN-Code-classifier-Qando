@@ -25,7 +25,7 @@ In deze file leggen we uit hoe de workflow items verwerkt in batches, en hoe tim
 ## ⏳ Wait nodes
 
 - `Wait` tussen loop en verwerking om de context windows van Open AI niet te overschrijden. Hierdoor raakt de n8n server ook niet overbelast en verloopt de run van de flow zonder problemen. 
-
+> **BELANGRIJK**
 ---
 
 ## 📌 Waarom deze structuur?
